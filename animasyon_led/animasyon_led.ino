@@ -1,5 +1,4 @@
-
-
+//Set pin connections of 8x8 matrix LED display
 const int ROW_1_PIN = 9;
 const int ROW_2_PIN = 8;
 const int ROW_3_PIN = 7;
