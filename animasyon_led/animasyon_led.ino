@@ -1,3 +1,5 @@
+
+
 const int ROW_1_PIN = 9;
 const int ROW_2_PIN = 8;
 const int ROW_3_PIN = 7;
@@ -16,7 +18,7 @@ const int COLUMN_6_PIN = 14;
 const int COLUMN_7_PIN = 13;
 const int COLUMN_8_PIN = 12;
 
-
+//identifying letter bits
 byte Shape[][8] ={
 {
   0b00000000,
@@ -66,7 +68,7 @@ byte Shape[][8] ={
 }};
 
 void setup() {
-  // Pin modlarını ayarla
+  // Set pin modes
   pinMode(ROW_1_PIN, OUTPUT);
   pinMode(ROW_2_PIN, OUTPUT);
   pinMode(ROW_3_PIN, OUTPUT);
@@ -83,43 +85,48 @@ void setup() {
   pinMode(COLUMN_6_PIN, OUTPUT);
   pinMode(COLUMN_7_PIN, OUTPUT);
   pinMode(COLUMN_8_PIN, OUTPUT);  
-//LED ekranını temizle
-  clearDisplay();  // Kalp şeklini ekrana çiz
+  
+  clearDisplay();  //Clean led screen
 }
 void loop() {
-
+  
+  // for  letter M
   drawShape(0,1000);
   clearDisplay();
-  delay(100); // 0.5 saniye bekle
+  delay(100); // Wait 0.5 s
 
-  // U harfi için
+  // for letter U
   drawShape(1,1000);
-  clearDisplay();
-  delay(500); // 0.5 saniye bekle
+  clearDisplay();  //Clean led screen
+  delay(500); //  Wait 0.5 s
 
+  // for letter C
   drawShape(2,1000);
   clearDisplay();
-  delay(500); // 0.5 saniye bekle
+  delay(500); 
 
+  //for letter I
   drawShape(3,1000);
   clearDisplay();
-  delay(500); // 0.5 saniye bekle
+  delay(500); 
 
+  //for letter F
   drawShape(4,1000);
   clearDisplay();
-  delay(500); // 0.5 saniye bekle
+  delay(500); 
 }
 
 void clearDisplay() {
   for (int row = 2; row <= 9; row++) {
     digitalWrite(row, HIGH);
   }  for (int col = 12; col <= 19; col++) {
-    digitalWrite(col, LOW);
+    digitalWrite(col, LOW);     // turn off
   }
 }
+
 void drawShape(uint8_t index, unsigned long time) {
-   unsigned long startTime = millis();
-   while (millis() - startTime < time){
+   unsigned long startTime = millis();           // determining  the current time
+   while (millis() - startTime < time){          // measuring time
     for (int row = 0; row < 8; row++) {
     digitalWrite(row + 2, LOW);    for (int col = 0; col < 8; col++) {
       digitalWrite(col + 12, bitRead(Shape[index][7 - row], col));
