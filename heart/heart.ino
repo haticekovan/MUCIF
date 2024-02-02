@@ -1,4 +1,4 @@
-//8x8 matrix LED ekranın pin bağlantılarını ayarlayın
+//Set pin connections of 8x8 matrix LED display
 const int ROW_1_PIN = 9;
 const int ROW_2_PIN = 8;
 const int ROW_3_PIN = 7;
@@ -18,7 +18,7 @@ const int COLUMN_7_PIN = 13;
 const int COLUMN_8_PIN = 12;
 
 
-// Kalp şekli için bit dizisi
+// Bits for heart shape 
 byte Shape[] = {
   0b00000000,
   0b00100100,
@@ -29,8 +29,9 @@ byte Shape[] = {
   0b00000000,
   0b00000000
 };
+
 void setup() {
-  // Pin modlarını ayarla
+  // Set pins mods
   pinMode(ROW_1_PIN, OUTPUT);
   pinMode(ROW_2_PIN, OUTPUT);
   pinMode(ROW_3_PIN, OUTPUT);
@@ -47,20 +48,22 @@ void setup() {
   pinMode(COLUMN_6_PIN, OUTPUT);
   pinMode(COLUMN_7_PIN, OUTPUT);
   pinMode(COLUMN_8_PIN, OUTPUT);  
-//LED ekranını temizle
-  clearDisplay();  // Kalp şeklini ekrana çiz
+
+  clearDisplay();  // Clean
   drawShape();
 }
 void loop() {
   for(int x=0;x<100;x++){ drawShape();}
 }
+
 void clearDisplay() {
   for (int row = 2; row <= 9; row++) {
     digitalWrite(row, HIGH);
   }  for (int col = 12; col <= 19; col++) {
-    digitalWrite(col, LOW);
+    digitalWrite(col, LOW);       //turn off
   }
 }
+
 void drawShape() {
   for (int row = 0; row < 8; row++) {
     digitalWrite(row + 2, LOW);    for (int col = 0; col < 8; col++) {
