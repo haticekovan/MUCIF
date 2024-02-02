@@ -49,7 +49,7 @@ void setup() {
   pinMode(COLUMN_7_PIN, OUTPUT);
   pinMode(COLUMN_8_PIN, OUTPUT);  
 
-  clearDisplay();  // Clean
+  clearDisplay();  // Clean led screen
   drawShape();
 }
 void loop() {
